@@ -3,29 +3,441 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>grid portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: #1e1e2f;
+            color: #fff;
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+
+        /* Header Styles */
+        header {
+            background: #0f3460;
+            color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00a8cc;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 50px;
+            height: 90vh;
+            background: #1e1e2f;
+        }
+
+        /* Left Content */
+        .hero-content {
+            max-width: 50%;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .hero-content h1 span {
+            color: #00a8cc;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .typing {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 30px;
+        }
+
+        /* Buttons */
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-buttons a {
+            padding: 10px 20px;
+            font-size: 1rem;
+            text-decoration: none;
+            background-color: #00a8cc;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .hero-buttons a:hover {
+            background-color: #007b9e;
+        }
+
+        /* Right Illustration */
+        .hero-illustration {
+            max-width: 40%;
+        }
+
+        .hero-illustration img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Typing Animation */
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .typing {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #e74c3c;
+            animation: typing 3s steps(20, end), blink 0.6s step-end infinite;
+        }
+        .projects-section {
+    padding: 40px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.projects-section h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.projects-section p {
+    font-size: 1.2rem;
+    color: #777;
+    margin-bottom: 40px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+.project-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 350px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.card-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.card-header .platform {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.card-content {
+    padding: 20px;
+    font-size: 1rem;
+    color: #555;
+    display: none;
+}
+
+.card-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.card-content li {
+    margin-bottom: 10px;
+}
+
+.card-content li strong {
+    color: #007bff;
+}
+
+.visible {
+    opacity: 1;
+    transition: opacity 1s ease-in;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+@media (max-width: 768px) {
+    .projects-section h2 {
+        font-size: 2rem;
+    }
+
+    .projects-section p {
+        font-size: 1rem;
+    }
+}
+
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="left-text">
 
-            <h2 class="heading">My portfolio</h2>
-            <p class="subheading">When words become unclear,I shall focus with photograph,when images become inadequate,I shall be continue with silence.</p>
+<!-- Header -->
+<header>
+    <h1>Raj's Portfolio</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact Me</a>
+    </nav>
+</header>
 
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <!-- Left Content -->
+    <div class="hero-content">
+        <h1>Hi, My name is <span>Raj</span></h1>
+        <p>and I am a passionate</p>
+        <div class="typing" id="typing-text"></div>
+        <div class="hero-buttons">
+            <a href="#">Download Resume</a>
+            <a href="https://github.com/" target="_blank">Visit Github</a>
         </div>
-        <div class="gallery">
-            <div class="box row-2" style="background-image: url(https://images.unsplash.com/photo-1487734092093-e5b02908580e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">Waterfalls</div>
-            <div class="box col-2"  style="background-image: url(https://besthqwallpapers.com/Uploads/29-3-2020/126777/chrome-hill-4k-sunset-parkhouse-hill-beautiful-nature.jpg);">Hills</div>
-            <div class="box" style="background-image: url(https://cdn.wallpapersafari.com/32/34/sjYntq.jpg);">Ocean</div>
-            <div class="box row-2" style="background-image: url(https://img-aws.ehowcdn.com/877x500p/s3-us-west-1.amazonaws.com/contentlab.studiod/getty/021f87468e17423da4dfc2963b982ee2);">Rain</div>
-            <div class="box col-2" style="background-image: url(https://www.hdwallpapers.in/download/dolomites_mountains_4k-wide.jpg);">Mountains</div>
-            <div class="box" style="background-image: url(https://www.treesaw.co.uk/wp-content/uploads/2020/03/tree-3822149_1920.jpg);">Trees</div>
-            <div class="box col-2" style="background-image: url(https://images3.alphacoders.com/724/724238.jpg);">Beach</div>
-        </div> 
-
     </div>
 
+    <!-- Right Illustration -->
+    <div class="hero-illustration">
+        <img src="images.jpg" alt="Coding Illustration">
+    </div>
+</section>
+<!-- About Section -->
+<section id="about" style="padding: 80px 50px; background: #0f3460; color: #fff; text-align: center;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #00a8cc;">About Me</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        I'm Raj, a professional web developer specializing in building and managing dynamic, high-performing websites. 
+        My expertise spans a wide range of platforms and technologies including WordPress, Shopify, PHP, Liquid code, and more.
+    </p>
+
+    <!-- Development Expertise Cards -->
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <!-- Card 1: WordPress -->
+        <div class="card" style="background: #1e1e2f; border-radius: 10px; padding: 30px; width: 300px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            <i class="fab fa-wordpress" style="font-size: 3rem; color: #00a8cc; margin-bottom: 15px;"></i>
+            <h3 style="font-size: 1.5rem; margin-bottom: 10px;">WordPress Development</h3>
+            <p style="font-size: 1rem; line-height: 1.6;">
+                I design and develop custom WordPress websites, implement themes and plugins, and ensure seamless functionality.
+            </p>
+        </div>
+
+        <!-- Card 2: Shopify -->
+        <div class="card" style="background: #1e1e2f; border-radius: 10px; padding: 30px; width: 300px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            <i class="fab fa-shopify" style="font-size: 3rem; color: #00a8cc; margin-bottom: 15px;"></i>
+            <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Shopify Customization</h3>
+            <p style="font-size: 1rem; line-height: 1.6;">
+                I customize Shopify themes and build tailored eCommerce stores, optimizing for user experience and conversions.
+            </p>
+        </div>
+
+        <!-- Card 3: PHP & Liquid Code -->
+        <div class="card" style="background: #1e1e2f; border-radius: 10px; padding: 30px; width: 300px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            <i class="fas fa-code" style="font-size: 3rem; color: #00a8cc; margin-bottom: 15px;"></i>
+            <h3 style="font-size: 1.5rem; margin-bottom: 10px;">PHP & Liquid Code</h3>
+            <p style="font-size: 1rem; line-height: 1.6;">
+                I write and optimize custom PHP and Liquid code to extend functionality and create custom solutions for clients.
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Add hover effect to cards
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'scale(1.05)';
+            card.style.boxShadow = '0 6px 10px rgba(0, 0, 0, 0.5)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'scale(1)';
+            card.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.3)';
+        });
+    });
+</script>
+<section id="projects" class="projects-section">
+    <h2>Our Recent Projects</h2>
+    <p>Explore some of the outstanding work we've done for our clients. Click on each project for detailed case studies, including challenges, solutions, and outcomes.</p>
     
+    <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+            <div class="card-header">
+                <h3>E-Commerce Store</h3>
+                <p class="platform">Built on Shopify</p>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li><strong>Custom Features:</strong> Integrated dynamic filters and user-friendly search options.</li>
+                    <li><strong>Technologies:</strong> Liquid Code, Shopify APIs.</li>
+                    <li><strong>Outcome:</strong> Increased sales by 30%.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+            <div class="card-header">
+                <h3>Business Website</h3>
+                <p class="platform">Powered by WordPress</p>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li><strong>Custom Features:</strong> Developed custom WordPress themes and plugins.</li>
+                    <li><strong>Technologies:</strong> PHP, JavaScript, Elementor.</li>
+                    <li><strong>Outcome:</strong> Boosted traffic by 50%.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+            <div class="card-header">
+                <h3>Custom PHP Web App</h3>
+                <p class="platform">Built with PHP & MySQL</p>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li><strong>Custom Features:</strong> Developed a scalable dashboard with real-time data visualization.</li>
+                    <li><strong>Technologies:</strong> PHP, MySQL, Chart.js.</li>
+                    <li><strong>Outcome:</strong> Streamlined business operations with automated reporting.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Smooth Scroll to Sections
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector(e.target.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Scroll Reveal Animation
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+
+    document.querySelectorAll('.projects-section').forEach(section => observer.observe(section));
+
+    // Toggle Project Card Content
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const content = card.querySelector('.card-content');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+</script>
+
+<script>
+    // Typing Animation
+    const typingText = document.getElementById('typing-text');
+    const words = ["Web Developer", "UI/UX Designer", "Freelancer"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let currentWord = "";
+
+    function type() {
+        if (charIndex < words[wordIndex].length) {
+            currentWord += words[wordIndex][charIndex];
+            typingText.textContent = currentWord + ' |'; // Adding a blinking cursor
+            charIndex++;
+            setTimeout(type, 150); // Delay between characters
+        } else {
+            setTimeout(erase, 1000); // Wait before erasing
+        }
+    }
+
+    function erase() {
+        if (charIndex > 0) {
+            currentWord = currentWord.slice(0, -1);
+            typingText.textContent = currentWord + ' |';
+            charIndex--;
+            setTimeout(erase, 100); // Faster erasing
+        } else {
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(type, 500); // Wait before typing next word
+        }
+    }
+
+    type(); // Start the typing effect
+</script>
+
 </body>
 </html>
