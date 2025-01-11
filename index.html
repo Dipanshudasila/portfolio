@@ -6,162 +6,164 @@
     <title>Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* General Styles */
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background: #1e1e2f;
-            color: #fff;
-            scroll-behavior: smooth; /* Smooth scrolling */
-        }
+     /* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #1e1e2f;
+    color: #fff;
+    scroll-behavior: smooth; /* Smooth scrolling */
+}
 
-        /* Header Styles */
-        header {
-            background: #0f3460;
-            color: #fff;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
+/* Header Styles */
+header {
+    background: #0f3460;
+    color: #fff;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
 
-        header h1 {
-            font-size: 1.5rem;
-        }
+header h1 {
+    font-size: 1.5rem;
+}
 
-        nav {
-            display: flex;
-            gap: 20px;
-        }
+nav {
+    display: flex;
+    gap: 20px;
+}
 
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
 
-        nav a:hover {
-            color: #00a8cc;
-        }
+nav a:hover {
+    color: #00a8cc;
+}
 
-        /* Hero Section Styles */
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 100px 50px;
-            height: 90vh;
-            background: #1e1e2f;
-        }
+/* Hero Section Styles */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    height: 90vh;
+    background: #1e1e2f;
+    text-align: center;
+}
 
-        /* Left Content */
-        .hero-content {
-            max-width: 50%;
-        }
+.hero-content h1 {
+    font-size: 3rem; /* Adjusted for responsiveness */
+    margin-bottom: 10px;
+    color: #fff;
+}
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            color: #fff;
-        }
+.hero-content h1 span {
+    color: #00a8cc;
+}
 
-        .hero-content h1 span {
-            color: #00a8cc;
-        }
+.hero-content p {
+    font-size: 1.2rem; /* Adjusted for responsiveness */
+    margin-bottom: 20px;
+}
 
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
+.typing {
+    font-size: 1.5rem; /* Adjusted for responsiveness */
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 30px;
+}
 
-        .typing {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #e74c3c;
-            margin-bottom: 30px;
-        }
+/* Buttons */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
-        /* Buttons */
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-        }
+.hero-buttons a {
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    background-color: #00a8cc;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
 
-        .hero-buttons a {
-            padding: 10px 20px;
-            font-size: 1rem;
-            text-decoration: none;
-            background-color: #00a8cc;
-            color: #fff;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
+.hero-buttons a:hover {
+    background-color: #007b9e;
+}
 
-        .hero-buttons a:hover {
-            background-color: #007b9e;
-        }
+/* Right Illustration */
+.hero-illustration {
+    max-width: 80%;
+    margin-top: 20px;
+}
 
-        /* Right Illustration */
-        .hero-illustration {
-            max-width: 40%;
-        }
+.hero-illustration img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
 
-        .hero-illustration img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
+/* Typing Animation */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
 
-        /* Typing Animation */
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
-        }
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
 
-        @keyframes blink {
-            50% {
-                border-color: transparent;
-            }
-        }
+.typing {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #e74c3c;
+    animation: typing 3s steps(20, end), blink 0.6s step-end infinite;
+}
 
-        .typing {
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 3px solid #e74c3c;
-            animation: typing 3s steps(20, end), blink 0.6s step-end infinite;
-        }
-        .projects-section {
-    padding: 40px;
+/* Projects Section */
+.projects-section {
+    padding: 40px 20px;
     background-color: #f9f9f9;
     text-align: center;
 }
 
 .projects-section h2 {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Reduced for responsiveness */
     color: #333;
     margin-bottom: 20px;
 }
 
 .projects-section p {
-    font-size: 1.2rem;
+    font-size: 1rem; /* Reduced for responsiveness */
     color: #777;
     margin-bottom: 40px;
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted for small screens */
+    gap: 20px;
     justify-items: center;
 }
 
@@ -171,7 +173,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     width: 100%;
-    max-width: 350px;
+    max-width: 300px; /* Adjusted for small screens */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -183,23 +185,23 @@
 .card-header {
     background-color: #007bff;
     color: #fff;
-    padding: 20px;
+    padding: 15px; /* Adjusted for responsiveness */
     text-align: center;
 }
 
 .card-header h3 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-size: 1.5rem; /* Reduced for responsiveness */
+    margin-bottom: 5px;
 }
 
 .card-header .platform {
-    font-size: 1rem;
+    font-size: 0.9rem; /* Reduced for responsiveness */
     font-weight: 400;
 }
 
 .card-content {
-    padding: 20px;
-    font-size: 1rem;
+    padding: 15px; /* Adjusted for responsiveness */
+    font-size: 0.9rem; /* Reduced for responsiveness */
     color: #555;
     display: none;
 }
@@ -217,22 +219,53 @@
     color: #007bff;
 }
 
-.visible {
-    opacity: 1;
-    transition: opacity 1s ease-in;
-}
-
-.hidden {
-    opacity: 0;
-}
-
+/* Media Queries for Small Screens */
 @media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 30px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .typing {
+        font-size: 1.3rem;
+    }
+
     .projects-section h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .projects-section p {
-        font-size: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .project-card {
+        max-width: 280px;
+    }
+
+    .card-header h3 {
+        font-size: 1.3rem;
+    }
+
+    .card-content {
+        font-size: 0.8rem;
     }
 }
 
